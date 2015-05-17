@@ -1,0 +1,4 @@
+dist
+specTmp
+node_modules
+config.private.json

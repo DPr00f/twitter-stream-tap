@@ -1,0 +1,38 @@
+{
+  "name": "challenge-02",
+  "version": "1.0.0",
+  "description": "Twitter API Search",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "test": "./node_modules/.bin/grunt test",
+    "watch": "./node_modules/.bin/grunt watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:jocolopes/challenge-02.git"
+  },
+  "author": "Joao Lopes <jocolopes@gmail.com> (http://joaolopes.info/)",
+  "license": "MIT",
+  "devDependencies": {
+    "assert": "^1.3.0",
+    "babelify": "^6.1.1",
+    "grunt": "^0.4.5",
+    "grunt-babel": "^5.0.0",
+    "grunt-browserify": "^3.8.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express-server": "^0.5.1",
+    "grunt-mocha-test": "^0.12.7",
+    "jshint-stylish": "^1.0.2",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "colors": "^1.1.0",
+    "express": "^4.12.3",
+    "merge": "^1.2.0"
+  }
+}
