@@ -1,4 +1,4 @@
-module.exports = class Server {
+export default class Server {
   constructor(app) {
     this.app = app;
   }
@@ -11,4 +11,4 @@ module.exports = class Server {
       console.info(`Server started http://${host}:${port}`);
     });
   }
-};
+}

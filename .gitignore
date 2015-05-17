@@ -1,4 +1,6 @@
 dist
 specTmp
+publicTmp
 node_modules
 config.private.json
+npm-debug.log

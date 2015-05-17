@@ -6,7 +6,7 @@ module.exports = class Routes {
   start() {
     let app = this.app;
     app.get('/', (req, res)=> {
-      res.send('hello world');
+      res.render('layout');
     });
   }
 };

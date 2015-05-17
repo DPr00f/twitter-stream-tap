@@ -9,5 +9,6 @@
   "undef"   : true,
   "unused"  : true,
   "strict"  : false,
-  "node"    : true
+  "node"    : true,
+  "browser" : true
 }
