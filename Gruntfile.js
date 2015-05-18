@@ -1,5 +1,17 @@
 module.exports = function(grunt) {
-    grunt.initConfig({
+  var paths = {
+    app: './src/app/',
+    src: './src/',
+    public: './src/public/',
+    test: './src/test/',
+    dist: './dist/',
+    tmp: {
+      public: './src/publicTmp/',
+      test: './src/testTmp/'
+    }
+  };
+
+  grunt.initConfig({
     babel: {
       options: {
         sourceMap: false,
@@ -8,27 +20,27 @@ module.exports = function(grunt) {
       server: {
         files: [{
           expand: true,
-          cwd: './',
+          cwd: paths.src,
           src: ['index.js', 'app/**/*.js'],
-          dest: 'dist',
+          dest: paths.dist,
           ext: '.js'
         }]
       },
       public: {
         files: [{
           expand: true,
-          cwd: './public',
+          cwd: paths.public,
           src: ['**/*.js', '!**/libs/**/*.js'],
-          dest: 'publicTmp',
+          dest: paths.tmp.public,
           ext: '.js'
         }]
       },
       tests: {
         files: [{
           expand: true,
-          cwd: './test',
+          cwd: paths.test,
           src: ['**/*.js'],
-          dest: 'specTmp',
+          dest: paths.tmp.test,
           ext: '.js'
         }]
       }
@@ -37,7 +49,7 @@ module.exports = function(grunt) {
     browserify : {
       frontend: {
         files: {
-          'dist/public/js/main.js': 'publicTmp/js/index.js'
+          'dist/public/js/main.js': paths.tmp.public + 'js/index.js'
         }
       }
     },
@@ -47,7 +59,7 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc',
         reporter: require('jshint-stylish')
       },
-      all: ['index.js', 'app/**/*.js', 'public/**/*.js', '!public/js/libs/**/*.js']
+      all: [paths.src + 'index.js', paths.app + '**/*.js', paths.public + '**/*.js', '!' + paths.public + 'js/libs/**/*.js']
     },
 
     mochaTest: {
@@ -56,15 +68,15 @@ module.exports = function(grunt) {
           reporter: 'spec',
           quiet: false
         },
-        src: ['specTmp/**/*.js']
+        src: [paths.tmp.test + '**/*.js']
       }
     },
 
     clean: {
-      tests: ['./specTmp'],
-      public: ['./publicTmp'],
-      production: ['./dist/public/css/main.css', './dist/public/js/main.js'],
-      dist: ['./dist']
+      tests: [paths.tmp.test],
+      public: [paths.tmp.public],
+      production: [paths.dist + 'public/css/main.css', paths.dist + 'public/js/main.js'],
+      dist: [paths.dist]
     },
 
     'string-replace': {
@@ -83,7 +95,7 @@ module.exports = function(grunt) {
 
     watch: {
       scripts: {
-        files: ['**/*.js'],
+        files: [paths.src + '**/*.js'],
         tasks: ['test', 'buildJS', 'express:server'],
         options: {
           spawn: false
@@ -108,7 +120,7 @@ module.exports = function(grunt) {
     express: {
       server: {
         options: {
-          script: './dist/index.js'
+          script: paths.dist + 'index.js'
         }
       }
     },
@@ -117,25 +129,27 @@ module.exports = function(grunt) {
       config: {
         files: [{
           expand: true,
+          cwd: paths.src,
           src: ['config.json', 'config.private.json'],
-          dest: 'dist',
+          dest: paths.dist,
           filter: 'isFile'
         }]
       },
       views: {
         files: [{
           expand: true,
+          cwd: paths.src,
           src: ['app/views/**/*.ejs'],
-          dest: 'dist',
+          dest: paths.dist,
           filter: 'isFile'
         }]
       },
       libs: {
         files: [{
           expand: true,
-          cwd: 'public',
+          cwd: paths.public,
           src: ['js/libs/**/*.js'],
-          dest: 'publicTmp',
+          dest: paths.tmp.public,
           filter: 'isFile'
         }]
       }
@@ -144,7 +158,7 @@ module.exports = function(grunt) {
     sass: {
       main: {
         files: {
-          'dist/public/css/main.css': 'public/sass/main.scss'
+          'dist/public/css/main.css': paths.public + 'sass/main.scss'
         }
       }
     },
@@ -152,7 +166,7 @@ module.exports = function(grunt) {
     uglify: {
       scripts: {
         files: {
-          'dist/public/js/main.min.js': 'dist/public/js/main.js'
+          'dist/public/js/main.min.js': paths.dist + 'public/js/main.js'
         }
       }
     },
@@ -160,7 +174,7 @@ module.exports = function(grunt) {
     cssmin: {
       styles: {
         files: {
-          'dist/public/css/main.min.css': 'dist/public/css/main.css'
+          'dist/public/css/main.min.css': paths.dist + 'public/css/main.css'
         }
       }
     }
@@ -189,5 +203,5 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', ['serve', 'watch']);
   grunt.registerTask('default', ['test', 'build']);
 
-  grunt.registerTask('production', ['clean:dist', 'default', 'string-replace:production', 'uglify:scripts', 'cssmin:styles', 'clean:production'])
-}
+  grunt.registerTask('production', ['clean:dist', 'default', 'string-replace:production', 'uglify:scripts', 'cssmin:styles', 'clean:production']);
+};

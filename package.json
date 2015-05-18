@@ -1,5 +1,5 @@
 {
-  "name": "challenge-02",
+  "name": "twitter-stream-tap",
   "version": "1.0.0",
   "description": "Twitter API Search",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:jocolopes/challenge-02.git"
+    "url": "git@github.com:DPr00f/twitter-stream-tap.git"
   },
   "author": "Joao Lopes <jocolopes@gmail.com> (http://joaolopes.info/)",
   "license": "MIT",

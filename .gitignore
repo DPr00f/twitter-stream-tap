@@ -1,6 +1,6 @@
 dist
-specTmp
-publicTmp
+src/testTmp
+src/publicTmp
 node_modules
 config.private.json
 npm-debug.log
