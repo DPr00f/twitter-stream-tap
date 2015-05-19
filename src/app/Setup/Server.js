@@ -4,9 +4,11 @@ export default class Server {
   }
 
   start(serverPort = 3000) {
-    var server = this.app.listen(serverPort, ()=> {
-      var host = server.address().address;
-      var port = server.address().port;
+    let server = this.app.listen(serverPort, ()=> {
+      console.log(this);
+      
+      let host = server.address().address;
+      let port = server.address().port;
 
       console.info(`Server started http://${host}:${port}`);
     });

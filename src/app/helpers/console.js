@@ -1,8 +1,8 @@
 import config from "./config";
 
 console.error = function consoleError() {
-  var toWrite = ['[FATAL]'.bold.red];
-  for(var i in arguments){
+  let toWrite = ['[FATAL]'.bold.red];
+  for(let i in arguments){
     if(arguments[i]){
       if(typeof arguments[i] === 'string'){
          toWrite.push(arguments[i].red);
@@ -16,8 +16,8 @@ console.error = function consoleError() {
 
 console.debug = function consoleDebug() {
   if(config.log.debug) {
-    var toWrite = ['[Debug]'.bold.blue];
-    for(var i in arguments){
+    let toWrite = ['[Debug]'.bold.blue];
+    for(let i in arguments){
       if(arguments[i]){
         if(typeof arguments[i] === 'string'){
          toWrite.push(arguments[i].blue);
@@ -32,8 +32,8 @@ console.debug = function consoleDebug() {
 
 console.info = function consoleInfo() {
   if(config.log.info) {
-    var toWrite = ['[Info]'.bold.blue];
-    for(var i in arguments){
+    let toWrite = ['[Info]'.bold.blue];
+    for(let i in arguments){
       if(arguments[i]){
         if(typeof arguments[i] === 'string'){
          toWrite.push(arguments[i].blue);

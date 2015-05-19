@@ -4,9 +4,9 @@ import path from "path";
 import "colors";
 
 function loadConfig () {
-  var config = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'config.json')));
+  let config = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'config.json')));
   try{
-    var stats = fs.lstatSync(path.join(__dirname, '..', '..', 'config.private.json'));
+    let stats = fs.lstatSync(path.join(__dirname, '..', '..', 'config.private.json'));
 
     if( stats.isFile() ){
         config = merge(config, JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'config.private.json'))));

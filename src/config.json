@@ -3,5 +3,11 @@
   "log": {
     "debug": true,
     "info": true
+  },
+  "twitter": {
+    "consumer_key": "use it in config.private.json",
+    "consumer_secret": "use it in config.private.json",
+    "access_token_key": "use it in config.private.json",
+    "access_token_secret": "use it in config.private.json"
   }
 }
