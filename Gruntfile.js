@@ -195,7 +195,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['jshint', 'babel:tests', 'mochaTest', 'clean:tests']);
   grunt.registerTask('buildViews', ['copy:views']);
-  grunt.registerTask('buildJS', ['copy:config', 'babel:server','babel:public', 'copy:libs', 'browserify', 'clean:public']);
+  grunt.registerTask('buildJS', ['copy:config', 'babel:server','babel:public', 'copy:libs', 'browserify']);
   grunt.registerTask('buildCSS', ['sass:main']);
   grunt.registerTask('build', ['buildViews', 'buildCSS', 'buildJS']);
   grunt.registerTask('serve', ['default', 'express:server']);

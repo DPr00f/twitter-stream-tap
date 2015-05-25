@@ -1,4 +1,8 @@
+@import 'normalize';
+@import 'variables';
+
+@import 'components/input';
+
 body {
-  background: red;
-  color: green;
+  background: $page-bgcolor;
 }
